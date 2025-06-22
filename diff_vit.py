@@ -88,7 +88,7 @@ class DiffVisionTransformer(nn.Module):
         self.encoder_blocks = nn.ModuleList(
             [EncoderBlock(
                 d, intermediate_dim, dropout_rate_blocks,
-                l, attention_head_size, n_heads
+                l+1, attention_head_size, n_heads
                 ) for l in range(n_blocks)]
             )
         

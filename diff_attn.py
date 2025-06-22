@@ -23,7 +23,7 @@ class DiffAttn(nn.Module):
                  d_model: int,
                  attention_head_size: int,
                  depth: int, # lambda_init is initialized with a value that depends on l (the index of the layer) [1, L]
-                 bias: bool = False  # They dont use it
+                 bias: bool = False  # They dont use it on the paper
                  ) -> None:
         super().__init__()
         self.k_proj = nn.Linear(d_model, attention_head_size, bias = bias)

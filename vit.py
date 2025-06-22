@@ -275,8 +275,7 @@ class VisionTransformer(nn.Module):
             return (x_cls, out, all_attns)  # cls token as a feature extractor
         
         return (x_cls, out, None)   # cls token as a feature extractor
-        
-    
+  
 if __name__ == "__main__":
     
     x = torch.rand((10, 1, 256, 512))

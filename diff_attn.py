@@ -48,12 +48,13 @@ class DiffAttn(nn.Module):
         
     def forward(self, x: torch.Tensor):
         
+        # print(x.shape)
         # x -> (B, N, d_model)
         
         q = self.q_proj(x)  # (B, N, attention_head_size)
         k = self.k_proj(x)
         v = self.v_proj(x)
-        
+
         # Splitting into two matrixes
         q1, q2 = torch.split(q, int(q.shape[2] / 2), dim=2)  # (B, N, d) where d = attention_head_size / 2
         k1, k2 = torch.split(k, int(k.shape[2] / 2), dim=2)

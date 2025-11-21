@@ -97,6 +97,7 @@ class DiffVisionTransformer(nn.Module):
         
         
     def forward(self, x: torch.Tensor):
+        
         x = self.patchifier(x)  # B, N_patches, D
         
         # cls_token appended at the beginning
@@ -108,7 +109,6 @@ class DiffVisionTransformer(nn.Module):
         x = self.pos_embed + x
         
         # apply encoder
-        all_attns = []
         for block in self.encoder_blocks:
             x = block(x)
         
@@ -123,8 +123,7 @@ if __name__ == "__main__":
     
     x = torch.rand((10, 1, 256, 512))
     
-    
-    vit = DiffVisionTransformer(
+    vit = DiffVisionTransformer(  # you have to make sure in this implementation that d / attention_head_size = n_heads
         768,
         (256, 512),
         (16,16),

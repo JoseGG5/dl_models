@@ -210,15 +210,15 @@ class VicReg(nn.Module):
             encoder,
             expander: Expander,
 
-            p_time_mask: float = 0.25,
+            p_time_mask: float = 0.5,
             time_mask_n: int = 1,
             time_bins: int = 500,
-            time_mask_ratio: float = 0.08,
+            time_mask_ratio: float = 0.1,
 
-            p_freq_mask: float = 0.25,
+            p_freq_mask: float = 0.5,
             freq_mask_n: int = 1,
             freq_bins: int = 256,
-            freq_mask_ratio: float = 0.08,
+            freq_mask_ratio: float = 0.1,
 
             p_time_shift: float = 0.4,
             max_time_shift_ratio: float = 0.2,

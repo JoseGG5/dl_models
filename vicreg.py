@@ -315,12 +315,14 @@ class VicRegLoss(nn.Module):
 
 if __name__ == "__main__":
 
-    PATH = r"C:\Users\Jose Antonio\Desktop\ScriptsProyectos\Miscelanea\whistle_detector\ecoss-expert\data\jfb-it\Cetaceans_Delphinus delphis_Sicily channel_300000_16_15_1_chunk_0.wav"
+    PATH = r"C:\Users\Jose Antonio\Desktop\SanctSound_OC02_02_671117349_190828074416._12425_12430.wav"
     y, sr = torchaudio.load(PATH)
 
-    spectrogram = T.Spectrogram(n_fft=1024, power=1, hop_length=293)  # to obtain a 513 1024 spec size (divisible by 16)
-    spec = spectrogram(y)
-
+    spectrogram = T.Spectrogram(n_fft=1024, power=1, hop_length=234)  # to obtain a 513 1024 spec size (divisible by 16)
+    spec = spectrogram(y)[..., :1024]
+    print(sr)
+    print(spec.shape)
+    
     spec = torch.Tensor(librosa.amplitude_to_db(spec))
     spec_resized = nn.MaxPool2d(kernel_size=2)(spec).unsqueeze(0).repeat(10, 1, 1, 1)  # 10, 1, 256, 512 (B, C, F, T)
 

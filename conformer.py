@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 
-
 from vit import MultiHeadAttention
 
 class FFN(nn.Module):
@@ -111,7 +110,6 @@ class Conformer(nn.Module):
         return x
 
 
-        
 if __name__ == "__main__":
     # get a signal
     signal = torch.rand(size=(1, 48_000*5,))
